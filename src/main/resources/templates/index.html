@@ -27,6 +27,7 @@
         </td>
         <td>
             <form method="post" th:action="@{/delete}">
+                <input type="hidden" name="_method" value="delete" />
                 <button type="submit" th:name="id" th:value="${user.id}">Delete</button>
             </form>
         </td>

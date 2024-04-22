@@ -3,10 +3,7 @@ package web.FirstApp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import web.FirstApp.model.User;
 import web.FirstApp.service.UserService;
 
@@ -30,7 +27,6 @@ public class UserController {
     }
     @GetMapping(value = "/new")
     public String createUserForm(@ModelAttribute("user") User user) {
-        System.out.println("new user");
         return "CreateUser";
     }
     @PostMapping
@@ -48,12 +44,12 @@ public class UserController {
         return "/";
     }
 
-    @PostMapping("/edit")
+    @PatchMapping("/edit")
     public String editUser(@ModelAttribute("user") User user) {
         userService.updateUser(user);
         return "redirect:/";
     }
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public String deleteUser(@RequestParam("id") Long id) {
         userService.deleteUser(id);
         return "redirect:/";

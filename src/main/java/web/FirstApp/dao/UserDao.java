@@ -1,4 +1,4 @@
-package web.FirstApp.UserDao;
+package web.FirstApp.dao;
 
 import web.FirstApp.model.User;
 
